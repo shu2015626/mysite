@@ -26,7 +26,7 @@ def send_verify_code(email, send_type='register'):
     if send_type == 'update_email':
         verify_code = make_verify_code(str_length=4).lower()
     else:
-        verify_code = make_verify_code(16)
+        verify_code = make_verify_code(str_length=16)
 
     obj_evc.code = verify_code
     obj_evc.email = email
@@ -44,8 +44,8 @@ def send_verify_code(email, send_type='register'):
             <p>感谢注册<a href="http://{0}/active/{1}" target=blank>www.mysite.com</a>，\
             和我一起使用Django吧</p>
             <p>请点击站点链接完成注册确认！</p>
-            <p>此链接有效期为{2}天！</p>
-        '''.format('127.0.0.1:8000', verify_code, settings.VARIFY_CODE_VALID_DAYS)
+            <p>此链接在{2}小时内有效！</p>
+        '''.format('127.0.0.1:8000', verify_code, settings.VARIFY_CODE_VALID_HOURS)
 
         msg = EmailMultiAlternatives(subject, text_content, settings.EMAIL_HOST_USER, [email])
         msg.attach_alternative(html_content, 'text/html')

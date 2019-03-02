@@ -59,8 +59,7 @@ ROOT_URLCONF = 'mysite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')]
-        ,
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -125,7 +124,7 @@ USE_TZ = False
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static/')
+    os.path.join(BASE_DIR, 'statics')
 ]
 
 
@@ -134,5 +133,21 @@ EMAIL_HOST = 'smtp.sina.com'
 EMAIL_PORT = 25
 EMAIL_HOST_USER = 'XXXXXXXXXXXXXXX@sina.cn'
 EMAIL_HOST_PASSWORD = 'XXXXXXXXXX'
-VARIFY_CODE_VALID_DAYS = 1
+VARIFY_CODE_VALID_HOURS = 24
+
+
+# 找来的一点django_simple_captcha的设置，可以参考下，更具体的请参阅官方文档
+# https://django-simple-captcha.readthedocs.io/en/latest/
+# 默认格式
+# CAPTCHA_OUTPUT_FORMAT = '%(image)s %(text_field)s %(hidden_field)s '
+# CAPTCHA_NOISE_FUNCTIONS = ('captcha.helpers.noise_null', # 没有样式
+#     # 'captcha.helpers.noise_arcs', # 线
+#     # 'captcha.helpers.noise_dots', # 点
+# )
+# # 图片中的文字为随机英文字母，如 mdsh
+# # CAPTCHA_CHALLENGE_FUNCT = 'captcha.helpers.random_char_challenge'
+#  # 图片中的文字为数字表达式，如2+2=
+# CAPTCHA_CHALLENGE_FUNCT = 'captcha.helpers.math_challenge'
+# # 超时(minutes)
+# CAPTCHA_TIMEOUT = 1
 

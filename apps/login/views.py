@@ -8,7 +8,7 @@ from django.conf import settings
 from .models import User, EmailVerifyCode
 from .forms import UserForm, RegisterForm
 from utils.encrypt import hash_code
-from utils.send_email import send_verify_code
+from utils.email_oper import send_verify_code
 
 
 class IndexView(View):
@@ -140,7 +140,7 @@ class UserActiveView(View):
         create_time = verify_code_record.create_time
         now = datetime.datetime.now()
         user = User.objects.get(email=verify_code_record.email)
-        if now > create_time + datetime.timedelta(days=settings.VARIFY_CODE_VALID_DAYS):
+        if now > create_time + datetime.timedelta(hours=settings.VARIFY_CODE_VALID_HOURS):
             # 验证码过期，需要把用户删除
             user.delete()
             message = '您的邮件已经过期！请重新注册!'
