@@ -38,7 +38,7 @@ sys.path.insert(0, os.path.join(BASE_DIR, 'extra_apps'))
 ```
 ### 2.FBV与CBV
 django的视图有两种模式FBV(Function Base View)和CBV(Class Base View).  
-教程是基于FBV做的视图，这部分代码使用的是CBV.不过提供了一个fbv的版本，便于学习
+教程是基于FBV做的视图，这部分代码使用的是CBV.不过提供了一个fbv的版本，便于学习  
 注：本项目两种view使用的切换，只要修改mysite主配置包下的urls_cbv.py或者urls_fbv.py为urls.py即可
 
 
@@ -109,7 +109,7 @@ return redirect(reverse("index"))
 ```
 这两个写法，第一个是直接将url地址写上，第二个则是通过url的名称，反解析出url地址。
 为url地址赋给别名还有一个好处就是在html中也不用直接写url地址，
-而是通过{% url 'url别名' 参数1 参数2 %}调用url,方便我们修改url地址
+而是通过{% url 'url别名' 参数1 参数2 %}调用url,方便我们修改url地址  
 请参考：apps/login/views_fbv.py
 
 

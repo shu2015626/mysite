@@ -15,18 +15,15 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-
-from login.views import IndexView, LoginView, LogoutView, RegisterView
-from login.views import UserActiveView
+from login import views_fbv as views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', IndexView.as_view(), name='index'),
-    url(r'^index/$', IndexView.as_view(), name='index'),
-    url(r'^login/$', LoginView.as_view(), name='login'),
-    url(r'^logout/$', LogoutView.as_view(), name='logout'),
-    url(r'^register/$', RegisterView.as_view(), name='register'),
-    url(r'^active/(?P<verify_code>.*)/$', UserActiveView.as_view(), name='user_active'),
-    # 图片验证码
-    url(r'^captcha/', include('captcha.urls')),
+    url(r'^$', views.index, name='index'),
+    url(r'^index/', views.index, name='index'),
+    url(r'^login/', views.login, name='login'),
+    url(r'^register/', views.register, name='register'),
+    url(r'^logout/', views.logout, name='logout'),
+    url(r'^active/(?P<verify_code>.*)/$', views.user_active, name='user_active'),
+    url(r'^captcha', include('captcha.urls'))  # 二级路由
 ]
